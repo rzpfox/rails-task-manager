@@ -1,0 +1,24 @@
+<h1>My Tasks</h1>
+
+<%def checked(value) %>
+  <% if value == true %>
+    <% "checked" %>
+      <% end %>
+<% end %>
+
+
+
+<% @tasks.each do|task|%>
+  <h2>
+    <form type="checkbox"> <input type="checkbox"><%=link_to task.title, task_path(task)%><%= link_to task_path(task),
+      method: :delete,
+      data: { confirm: "Are you sure you want to delete this task?"  } do %>
+      <% image_tag('trash.png')%>
+    <% end %>
+    </form>
+  </h2>
+<% end %>
+
+<p><%=link_to "Add a new task", new_path  %></p>
+
+
